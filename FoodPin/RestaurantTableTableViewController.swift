@@ -17,6 +17,14 @@ class RestaurantTableTableViewController: UITableViewController {
     var restaurantLocations = ["Hong Kong", "Hong Kong", "Hong Kong", "Hong Kong",
                                "Hong Kong", "Hong Kong", "Hong Kong", "Sydney", "Sydney", "Sydney", "New York", "New York", "New York", "New York", "New York", "New York", "New York","London", "London", "London", "London"]
     var restaurantTypes = ["Coffee & Tea Shop", "Cafe", "Tea House", "Austrian /Casual Drink", "French", "Bakery", "Bakery", "Chocolate", "Cafe", "American /Seafood", "American", "American", "Breakfast & Brunch", "Coffee & Tea", "Coffee & Tea", "Latin American", "Spanish", "Spanish", "Spanish", "British", "Thai"]
+    
+    
+    // declare a Boolean array:
+   // var restaurantIsVisited = Array(repeating: false, count: 21)
+    
+    var restaurantIsVisited = [false, false, false, false, false, false, false,
+                               false, false, false, false, false, false, false, false, false, false, false,
+                               false, false, false]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,21 +55,30 @@ class RestaurantTableTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cellIdentifier = "Cell"
+        //method is used for retrieving a reusable table cell from the queue with the specified cell identifier
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! RestaurantTableViewCell
+        //The dequeueReusableCellWithIdentifier method always returns a UITableViewCell object.
+        //If a custom cell is used, this object can be converted to the specific cell type (e.g. RestaurantTableViewCell)
 
         // Configure the cell...
-        //cell.textLabel?.text = restaurantNames[indexPath.row]
+        
         cell.nameLabel.text = restaurantNames[indexPath.row]
-       // cell.imageView?.image = UIImage(named:"restaurant.jpg")
-        //different picture
-        //cell.imageView?.image = UIImage(named: restaurantImages[indexPath.row])
         cell.thumbnailImageView.image = UIImage(named: restaurantImages[indexPath.row])
         cell.locationLabel.text = restaurantLocations[indexPath.row]
         cell.typeLabel.text = restaurantTypes[indexPath.row]
+        //update the accessory view
+        cell.accessoryType = restaurantIsVisited[indexPath.row] ? .checkmark : .none
+        /*if restaurantIsVisited[indexPath.row] {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }*/
 
         return cell
     }
+    //method is called after the user selects a row
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Create an option menu as an action sheet
         let optionMenu = UIAlertController(title: nil, message: "What do you want to do?", preferredStyle: .actionSheet)
@@ -83,19 +100,34 @@ class RestaurantTableTableViewController: UITableViewController {
         
         // Check-in action
        // we add a checkmark to the selected cell to indicate user has been to the restaurant.
-        let checkInAction = UIAlertAction(title: "Check in", style: .default, handler:
+        // Determine the check in title. If the selected restaurant has been checked (i.e.
+        // restaurantIsVisited[indexPath.row] returns true), the title will be set to "Undo Check in".
+        let checkInTitle = restaurantIsVisited[indexPath.row] ? "Undo Check in" : "Check in"
+        let checkInAction = UIAlertAction(title: checkInTitle, style: .default, handler:
             {
                 (action:UIAlertAction!) -> Void in
                 //retrieves the selected table cell using indexPath , which contains the index of the selected cell.
                 let cell = tableView.cellForRow(at: indexPath)
                 //updates the accessoryType property of the cell with a check mark.
-                cell?.accessoryType = .checkmark
+                //cell?.accessoryType = .checkmark
+                //update the value of the Bool array when a restaurant is checked
+                //self.restaurantIsVisited[indexPath.row] = true
+                
+                
+                //update the value of the Bool array when a restaurant is checked or unchecked
+                self.restaurantIsVisited[indexPath.row] = self.restaurantIsVisited[indexPath.row] ? false : true
+                // Toggle check-in and undo-check-in
+                cell?.accessoryType = self.restaurantIsVisited[indexPath.row] ? .checkmark : .none
         })
         optionMenu.addAction(checkInAction)
         optionMenu.addAction(callAction)
         optionMenu.addAction(cancelAction)
         // Display the menu
         present(optionMenu, animated: true, completion: nil)
+        
+        //method to deselect the row
+        tableView.deselectRow(at: indexPath, animated: false)
+        
     }
  
 
