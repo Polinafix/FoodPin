@@ -78,7 +78,7 @@ class RestaurantTableTableViewController: UITableViewController {
 
         return cell
     }
-    //method is called after the user selects a row
+   /* //method is called after the user selects a row
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Create an option menu as an action sheet
         let optionMenu = UIAlertController(title: nil, message: "What do you want to do?", preferredStyle: .actionSheet)
@@ -128,7 +128,7 @@ class RestaurantTableTableViewController: UITableViewController {
         //method to deselect the row
         tableView.deselectRow(at: indexPath, animated: false)
         
-    }
+    }*/
     
 /*// Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -187,6 +187,23 @@ class RestaurantTableTableViewController: UITableViewController {
         //telling the table view to create the buttons when someone swipes across the cell.
         return [deleteAction, shareAction]
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //The block of code is only executed for the showRestaurantDetail segue
+        if segue.identifier == "showRestaurantDetail" {
+            //retrieve the selected row
+            if let indexPath = tableView.indexPathForSelectedRow {
+                //retrieve the destination controller
+                let destinationController = segue.destination as!
+                RestaurantDetailViewController
+                destinationController.restaurantName = restaurantNames[indexPath.row]
+                destinationController.restaurantType = restaurantTypes[indexPath.row]
+                destinationController.restaurantLocation = restaurantLocations[indexPath.row]
+                destinationController.restaurantImage =
+                    restaurantImages[indexPath.row]
+            }
+        }
+    }
  
 
     /*
@@ -212,14 +229,6 @@ class RestaurantTableTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+  
 
 }
