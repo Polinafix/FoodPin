@@ -51,7 +51,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xa3-33-J5c">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xa3-33-J5c">
                                                             <rect key="frame" x="0.0" y="21.5" width="55" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -131,7 +131,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZw-Ur-s3o">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZw-Ur-s3o">
                                                             <rect key="frame" x="114" y="0.0" width="228" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -144,9 +144,11 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="bxi-1K-I2m" firstAttribute="top" secondItem="xAO-GI-B3a" secondAttribute="top" constant="7" id="Fwi-8J-5Wd"/>
                                                 <constraint firstItem="bxi-1K-I2m" firstAttribute="centerY" secondItem="xAO-GI-B3a" secondAttribute="centerY" id="GMP-kQ-uJ6"/>
                                                 <constraint firstItem="bxi-1K-I2m" firstAttribute="leading" secondItem="xAO-GI-B3a" secondAttribute="leadingMargin" constant="17" id="OzO-DE-5sU"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="bxi-1K-I2m" secondAttribute="trailing" id="ce8-Ql-bIM"/>
+                                                <constraint firstAttribute="bottom" secondItem="bxi-1K-I2m" secondAttribute="bottom" constant="7" id="yzi-5W-9Xp"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

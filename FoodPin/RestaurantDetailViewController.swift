@@ -44,6 +44,9 @@ UITableViewDelegate {
             240.0/255.0, alpha: 0.8)
         //remove the separators of the empty rows by setting the footer
         tableView.tableFooterView = UIView(frame: CGRect.zero)
+        //convert to self sizing cells
+        tableView.estimatedRowHeight = 36.0
+        tableView.rowHeight = UITableViewAutomaticDimension
         
     }
     override func viewWillAppear(_ animated: Bool) {
