@@ -327,7 +327,7 @@
         <!--New Restaurant-->
         <scene sceneID="tCa-Uf-kXw">
             <objects>
-                <tableViewController id="ZXG-96-Txb" sceneMemberID="viewController">
+                <tableViewController id="ZXG-96-Txb" customClass="AddRestaurantTableViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="TXx-kX-rzd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -470,6 +470,9 @@
                                                     </constraints>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <state key="normal" title="YES"/>
+                                                    <connections>
+                                                        <action selector="toggleBeenHereButtonWithSender:" destination="ZXG-96-Txb" eventType="touchUpInside" id="ZvQ-UE-5ZS"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mSS-Np-WFL">
                                                     <rect key="frame" x="99" y="33" width="46" height="30"/>
@@ -479,6 +482,9 @@
                                                     </constraints>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <state key="normal" title="NO"/>
+                                                    <connections>
+                                                        <action selector="toggleBeenHereButtonWithSender:" destination="ZXG-96-Txb" eventType="touchUpInside" id="1PT-6i-b2W"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -507,7 +513,21 @@
                                 <segue destination="fcF-nd-bAk" kind="unwind" unwindAction="unwindToHomeScreenWithSegue:" id="r0O-xS-Rrp"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="4rr-Wd-7ng">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="saveRestaurant:" destination="ZXG-96-Txb" id="j3Q-6z-xLm"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="locationTextField" destination="r9U-5g-2xr" id="fVb-a5-mu7"/>
+                        <outlet property="nameTextField" destination="WH7-Sr-SLJ" id="9ep-Wt-Cy6"/>
+                        <outlet property="noButton" destination="mSS-Np-WFL" id="eRS-nh-OCb"/>
+                        <outlet property="photoImageView" destination="c2T-vJ-beY" id="3sT-JT-e9l"/>
+                        <outlet property="typeTextField" destination="8dK-QN-FpL" id="XKO-j0-r4U"/>
+                        <outlet property="yesButton" destination="EkD-fj-UKY" id="LfE-GT-YSI"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nec-3v-4zm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="fcF-nd-bAk" userLabel="Exit" sceneMemberID="exit"/>
