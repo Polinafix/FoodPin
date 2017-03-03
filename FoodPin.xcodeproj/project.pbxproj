@@ -16,6 +16,7 @@
 		E05E16F51E66111300E850CC /* RestaurantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05E16F41E66111300E850CC /* RestaurantDetailViewController.swift */; };
 		E05E16F71E66241400E850CC /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05E16F61E66241400E850CC /* Restaurant.swift */; };
 		E05E16F91E663FAF00E850CC /* RestaurantDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05E16F81E663FAF00E850CC /* RestaurantDetailTableViewCell.swift */; };
+		E0D109E51E68F9C900D4ABAF /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D109E41E68F9C900D4ABAF /* ReviewViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		E05E16F41E66111300E850CC /* RestaurantDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailViewController.swift; sourceTree = "<group>"; };
 		E05E16F61E66241400E850CC /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		E05E16F81E663FAF00E850CC /* RestaurantDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailTableViewCell.swift; sourceTree = "<group>"; };
+		E0D109E41E68F9C900D4ABAF /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				E05E16F41E66111300E850CC /* RestaurantDetailViewController.swift */,
 				E05E16F61E66241400E850CC /* Restaurant.swift */,
 				E05E16F81E663FAF00E850CC /* RestaurantDetailTableViewCell.swift */,
+				E0D109E41E68F9C900D4ABAF /* ReviewViewController.swift */,
 			);
 			path = FoodPin;
 			sourceTree = "<group>";
@@ -151,6 +154,7 @@
 			files = (
 				E05E16F71E66241400E850CC /* Restaurant.swift in Sources */,
 				E05E16DB1E632EB500E850CC /* AppDelegate.swift in Sources */,
+				E0D109E51E68F9C900D4ABAF /* ReviewViewController.swift in Sources */,
 				E05E16F31E6380AC00E850CC /* RestaurantTableViewCell.swift in Sources */,
 				E05E16F91E663FAF00E850CC /* RestaurantDetailTableViewCell.swift in Sources */,
 				E05E16F51E66111300E850CC /* RestaurantDetailViewController.swift in Sources */,
