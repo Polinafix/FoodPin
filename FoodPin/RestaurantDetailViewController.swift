@@ -93,6 +93,9 @@ UITableViewDelegate {
         
         return cell
     }
+    
+    @IBAction func close(segue:UIStoryboardSegue) {
+    }
 
     
 
