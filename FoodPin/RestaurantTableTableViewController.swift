@@ -117,6 +117,10 @@ class RestaurantTableTableViewController: UITableViewController {
 
         return cell
     }
+    
+    @IBAction func unwindToHomeScreen(segue:UIStoryboardSegue) {
+    }
+    
    /* //method is called after the user selects a row
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Create an option menu as an action sheet
