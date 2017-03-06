@@ -19,11 +19,10 @@ UITableViewDelegate {
     //a reference to update the image view
     @IBOutlet weak var restaurantImageView: UIImageView!
     
-//    @IBOutlet weak var name: UILabel!
-//    @IBOutlet weak var type: UILabel!
-//    @IBOutlet weak var location: UILabel!
+
 //    when user selects a restaurant in the table view controller, there must be a way to pass the image name to the detail view. This variable will be used for data passing.
-    var restaurant:Restaurant!
+    
+    var restaurant:RestaurantMO!
     
 //    var restaurantImage = ""
 //    var restaurantName = ""
@@ -36,7 +35,7 @@ UITableViewDelegate {
     
 
         // Do any additional setup after loading the view.
-        restaurantImageView.image = UIImage(named: restaurant.image)
+        restaurantImageView.image = UIImage(data: restaurant.image as! Data)
         //display the restaurant name in the navigation bar
         title = restaurant.name
         tableView.backgroundColor = UIColor(red: 240.0/255.0, green: 240.0/255.0, blue:
@@ -57,7 +56,7 @@ UITableViewDelegate {
         //add a pin annotation to the non-interactive map in the table footer
         let geoCoder = CLGeocoder()
         //convert the address of the selected restaurant into coordinates
-        geoCoder.geocodeAddressString(restaurant.location, completionHandler: {
+        geoCoder.geocodeAddressString(restaurant.location!, completionHandler: {
             placemarks, error in
             if error != nil {
                 print("error")
@@ -117,7 +116,7 @@ UITableViewDelegate {
             cell.valueLabel.text = restaurant.location
         case 3:
             cell.fieldLabel.text = "Phone"
-            cell.valueLabel.text = restaurant.phone
+            cell.valueLabel.text = restaurant.phoneNumber
         case 4:
             cell.fieldLabel.text = "Been here"
             cell.valueLabel.text = (restaurant.isVisited) ? "Yes, I've been here before. \(restaurant.rating)" : "No"
@@ -143,6 +142,9 @@ UITableViewDelegate {
             case "dislike": restaurant.rating = "I don't like it."
             default: break
             }
+        }
+        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+            appDelegate.saveContext()
         }
         //reload the table view to refresh the table.
         tableView.reloadData()

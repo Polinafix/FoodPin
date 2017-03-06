@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import CoreData
 
 class AddRestaurantTableViewController: UITableViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    var restaurant:RestaurantMO!
     
     @IBOutlet var photoImageView: UIImageView!
     @IBOutlet var nameTextField:UITextField!
@@ -16,6 +19,7 @@ class AddRestaurantTableViewController: UITableViewController,UIImagePickerContr
     @IBOutlet var locationTextField:UITextField!
     @IBOutlet var yesButton:UIButton!
     @IBOutlet var noButton:UIButton!
+    @IBOutlet var phoneTextField: UITextField!
     
     var isVisited = true
 
@@ -87,11 +91,25 @@ class AddRestaurantTableViewController: UITableViewController,UIImagePickerContr
             alertController.addAction(alertAction)
             present(alertController, animated: true, completion: nil)
         }
-        
-        print("Name: \(nameTextField.text)")
-        print("Type: \(typeTextField.text)")
-        print("Location: \(locationTextField.text)")
-        print("Have you been here: \(isVisited)")
+        //to get the AppDelegate object and variable
+        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+            restaurant = RestaurantMO(context:
+                appDelegate.persistentContainer.viewContext)
+            restaurant.name = nameTextField.text
+            restaurant.type = typeTextField.text
+            restaurant.location = locationTextField.text
+            restaurant.phoneNumber = phoneTextField.text
+            restaurant.isVisited = isVisited
+            if let restaurantImage = photoImageView.image {
+                //get the data of a specified image in PNG format
+                if let imageData = UIImagePNGRepresentation(restaurantImage) {
+                    //convert it to an NSData object
+                    restaurant.image = NSData(data: imageData)
+                }
+            }
+            print("Saving data to context ...")
+            appDelegate.saveContext()
+        }
         
         dismiss(animated: true, completion: nil)
     

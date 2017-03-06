@@ -13,7 +13,7 @@ class ReviewViewController: UIViewController {
     @IBOutlet var backgroundImageView: UIImageView!
     @IBOutlet var containerView: UIView!
     
-    var restaurant: Restaurant!
+    var restaurant: RestaurantMO!
 
     @IBOutlet weak var reviewImage: UIImageView!
     @IBOutlet var closeButton: UIButton!
@@ -34,8 +34,8 @@ class ReviewViewController: UIViewController {
         let translateTransform = CGAffineTransform.init(translationX: 0, y: -1000)
         let combineTransform = scaleTransform.concatenating(translateTransform)
         containerView.transform = combineTransform
-        reviewImage.image = UIImage(named: restaurant.image)
-        backgroundImageView.image = UIImage(named: restaurant.image)
+        reviewImage.image = UIImage(data: restaurant.image as! Data)
+        backgroundImageView.image = UIImage(data: restaurant.image as! Data)
         
         closeButton.transform = CGAffineTransform.init(translationX: 1000, y: 0)
     }
