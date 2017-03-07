@@ -23,6 +23,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let barFont = UIFont(name: "AvenirNextCondensed-DemiBold", size: 24.0) {
             UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName:barFont]
         }
+        UITabBar.appearance().tintColor = UIColor(red: 235.0/255.0, green: 75.0/255.0,
+                                                  blue: 27.0/255.0, alpha: 1.0)
+        
+        UITabBar.appearance().barTintColor = UIColor(red: 236.0/255.0, green:
+            240.0/255.0, blue: 241.0/255.0, alpha: 1.0)
+        UITabBar.appearance().backgroundImage = UIImage(named: "tabbar-background")
+        UITabBar.appearance().selectionIndicatorImage = UIImage(named: "tabitemselected")
         return true
     }
 
